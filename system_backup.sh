@@ -25,13 +25,13 @@ fi
 result=`grep -rn "^dtoverlay=" /boot/config.txt | grep ":rotate=" | tail -n 1`
 if [ $? -eq 0 ]; then
 str=`echo -n $result | awk -F: '{printf $2}' | awk -F= '{printf $NF}'`
-if [ -f /boot/overlays/$str-overlay.dtb ]; then
-sudo cp -rf /boot/overlays/$str-overlay.dtb ./.system_backup
-sudo rm -rf /boot/overlays/$str-overlay.dtb
+if [ -f /boot/firmware/$str-overlay.dtb ]; then
+sudo cp -rf /boot/firmware/$str-overlay.dtb ./.system_backup
+sudo rm -rf /boot/firmware/$str-overlay.dtb
 fi
-if [ -f /boot/overlays/$str.dtbo ]; then
-sudo cp -rf /boot/overlays/$str.dtbo ./.system_backup
-sudo rm -rf /boot/overlays/$str.dtbo
+if [ -f /boot/firmware/$str.dtbo ]; then
+sudo cp -rf /boot/firmware/$str.dtbo ./.system_backup
+sudo rm -rf /boot/firmware/$str.dtbo
 fi
 fi
 
